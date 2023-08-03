@@ -23,6 +23,10 @@ app.use('/api/task',require('./routes/task'));
 app.use('/api/media',require('./routes/media'));
 // app.use('/api/media',require('./routes/media'))
 
+app.get('/',(req,res)=>{
+  res.send({msg:"success",status:400})
+})
+
 app.listen(port, () => {
   console.log(`project manager  listening at http://localhost:${port}`)
 })
