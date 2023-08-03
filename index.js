@@ -1,4 +1,4 @@
-const connectToMongo=require("./db");
+// const connectToMongo=require("./db");
 var cors = require('cors')
 const express = require('express')
 connectToMongo();
@@ -12,6 +12,13 @@ const port =process.env.PORT|| 5000
 app.use(cors())
 // app.use(express.json());
 //heroku
+const mongoURI=`mongodb+srv://${process.env.USERNAME}:${process.env.PASSWORD}@cluster0.agn0jto.mongodb.net/projectrepo?retryWrites=true&w=majority`
+
+    mongoose.connect(mongoURI,
+      { useNewUrlParser: true, useUnifiedTopology: true },()=>{
+        console.log("connected to mongo successfully");
+    })
+
 
 //Available routes
 app.use(bodyParser.json({ limit: '30mb', extended: true }))
